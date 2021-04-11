@@ -1,0 +1,27 @@
+The Asteroid Defender program has several bugs that need fixing.  In addition, there are concerns of cache misses by the CPU when executing the program.  All bugs must be fixed and the program must be optimized for performance and memory usage.  You have 72 hours to complete this task.
+
+When you build the executable treat any warnings by the compiler as an error.
+
+Document every bug found and how it was fixed.
+
+Asteroid Defender has the following requirements:
+
+1) The Space Colony is stationary at (0.0, 0.0).
+2) The Space Colony will always fire its Laser Cannon at the closest and fastest asteroid.
+3) The game starts with four large asteroids located at:
+	(-480.0, 230.0)
+	(1540.0, 120.0)
+	(620.0, -480.0)
+	(-140.0, -950.0)
+4) There are three types of asteroids: Large, Medium, and Small
+5) Large asteroids move at 10 km/s
+6) Medium asteroids move at 20 km/s
+7) Small asteroids move at 40 km/s
+8) Asteroids always move towards the Space Colony each game update.
+9) The Laser Cannon has an 80% chance of hitting a Large asteroid
+10) The Laser Cannon has a 65% chance of hitting a Medium asteroid.
+11) The Laser Cannon has a 50% chance of hitting a Small asteroid.
+12) Large asteroids split into two Medium asteroids when hit
+13) Medium asteroids split into two Small asteroids when hit
+14) Small asteroids are destroyed when hit
+15) Newly split asteroids have a new position that is +/- 10 km away from the parent asteroid.
