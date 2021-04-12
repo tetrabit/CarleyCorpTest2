@@ -14,7 +14,7 @@ public:
 
 	void intialize();
 	void update(float delta_t);
-	unsigned int getRemainingAsteroids() { return Asteroids.size(); }
+	unsigned int getRemainingAsteroids() { return static_cast<int>(Asteroids.size()); }
 	void printStats();
 
 private:
