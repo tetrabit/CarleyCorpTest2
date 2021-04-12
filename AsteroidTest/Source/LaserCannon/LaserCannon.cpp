@@ -26,4 +26,5 @@ float LaserCannon::getHitProbability(std::string asteroid_size)
 	{
 		return SmallHitProbability;
 	}
+	return LargeHitProbability;
 }
