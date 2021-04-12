@@ -6,6 +6,9 @@ Asteroid::Asteroid(float px, float py, char size, std::string size_name)
 {
 	PositionX = px;
 	PositionY = py;
+	VelocityX = 0;
+	VelocityY = 0;
+	Size = 0;
 
 	switch (size)
 	{
