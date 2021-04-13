@@ -3,7 +3,7 @@
 LaserCannon::LaserCannon()
 {
 	LargeHitProbability = 0.8f;
-	MediumHitProbability = 0.6f;
+	MediumHitProbability = 0.65f;
 	SmallHitProbability = 0.5f;
 }
 
