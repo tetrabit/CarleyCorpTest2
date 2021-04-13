@@ -1,5 +1,7 @@
 #include "SpaceColony.h"
+#include "../Asteroids/AsteroidSystem.h"
 #include <iostream>
+#include <deque>
 
 SpaceColony::SpaceColony(float x, float y) : RandomHit(0.0f, 1.0f), RandomOffset(-10.0f, 10.0f)
 {
@@ -14,7 +16,8 @@ SpaceColony::~SpaceColony()
 
 void SpaceColony::shootAtAsteroid(std::deque<Asteroid*> asteroids)
 {
-	Asteroid* TargetAsteroid = nullptr;
+	AsteroidSystem* asteroidSystem = asteroidSystem->getInstance();
+	Asteroid *TargetAsteroid = nullptr;
 	float MinDistance = 1000000.0f; // Just a really big dumb number
 	float ClosestDistance = 0.0f;
 
