@@ -30,4 +30,6 @@ private:
 	// Velocities in kilometers/second
 	float VelocityX;
 	float VelocityY;
+
+	void updateVelocity();
 };

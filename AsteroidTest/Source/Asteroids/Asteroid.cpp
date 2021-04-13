@@ -59,8 +59,44 @@ Asteroid::~Asteroid()
 
 void Asteroid::updatePosition(float delta_t)
 {
+	updateVelocity();
 	PositionX = PositionX + (VelocityX * delta_t);
 	PositionY = PositionY + (VelocityY * delta_t);
+}
+
+void Asteroid::updateVelocity()
+{
+	switch (Size)
+	{
+		case 0:
+		{
+			VelocityX = -normalizeVector(PositionX, PositionY)[0] * 10.0f;
+			VelocityY = -normalizeVector(PositionX, PositionY)[1] * 10.0f;
+
+			Size = 0;
+			SizeName = "Large";
+
+			break;
+		}
+		case 1:
+		{
+			VelocityX = -normalizeVector(PositionX, PositionY)[0] * 20.0f;
+			VelocityY = -normalizeVector(PositionX, PositionY)[1] * 20.0f;
+			Size = 1;
+			SizeName = "Medium";
+
+			break;
+		}
+		case 2:
+		{
+			VelocityX = -normalizeVector(PositionX, PositionY)[0] * 40.0f;
+			VelocityY = -normalizeVector(PositionX, PositionY)[1] * 40.0f;
+			Size = 2;
+			SizeName = "Small";
+
+			break;
+		}
+	}
 }
 
 void Asteroid::printStats()
