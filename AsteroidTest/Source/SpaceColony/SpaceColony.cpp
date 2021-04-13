@@ -32,6 +32,17 @@ void SpaceColony::shootAtAsteroid(std::deque<Asteroid*> asteroids)
 			TargetAsteroid = TheAsteroid;
 			MinDistance = ClosestDistance;
 		}
+		//check to see if there is a tie for distance, if there is take the faster asteroid
+		else if (ClosestDistance == MinDistance)
+		{
+			float targetAsteroidVelocity = sqrtf(powf(TheAsteroid->getVelocityX(), 2.0f) + powf(TheAsteroid->getVelocityY(), 2.0f));
+			float theAsteroidVelocity = sqrtf(powf(TheAsteroid->getVelocityX(), 2.0f) + powf(TheAsteroid->getVelocityY(), 2.0f));
+			if (targetAsteroidVelocity < targetAsteroidVelocity)
+			{
+				TargetAsteroid = TheAsteroid;
+				MinDistance = ClosestDistance;
+			}
+		}
 	}
 
 	// Shoot at the asteroid
