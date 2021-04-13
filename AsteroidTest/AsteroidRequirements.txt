@@ -25,3 +25,26 @@ Asteroid Defender has the following requirements:
 13) Medium asteroids split into two Small asteroids when hit
 14) Small asteroids are destroyed when hit
 15) Newly split asteroids have a new position that is +/- 10 km away from the parent asteroid.
+
+
+Bug Fixes
+
+in AsteroidSystem.h at getRemainingAsteroids() Cast size_t return type to int
+
+in Asteroids.cpp cleaned up warnings from non initialized variables
+
+in LaserCannon.cpp provided default return value to fix error
+
+in LaserCannon.cpp Constructor changed default falue of MediumHitProbability to 0.65f from 0.6 to comply with laser cannon chance of hitting
+
+in main.cpp converted for loop of random 100 ticks to check for remaining asteroids and loop until there are none left
+
+in Asteroid.cpp replaced non working velocity calculations with working ratio based system (see normalizeVector())
+
+in Asteroid.cpp created velocity update at updateVelocity() which is calculated every updatePosition() in case asteroid ever passes space station
+
+Converted AsteroidSystem to a singleton
+
+in SpaceColony.cpp utilize AsteroidSystem singleton to add and remove asteroids
+
+in SpaceColony.cpp added logic to determine what is the faster of two asteroids if there is a tie for distance, will still prioritize closer asteroid
