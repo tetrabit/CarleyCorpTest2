@@ -2,6 +2,15 @@
 #include <math.h>
 #include <iostream>
 
+float* normalizeVector(float PosX, float PosY)
+{
+	static float vector[2];
+	double length = sqrt(pow(PosX, 2) + pow(PosY, 2));
+	vector[0] = PosX / (float)length;
+	vector[1] = PosY / (float)length;
+	return vector;
+}
+
 Asteroid::Asteroid(float px, float py, char size, std::string size_name)
 {
 	PositionX = px;
@@ -12,36 +21,34 @@ Asteroid::Asteroid(float px, float py, char size, std::string size_name)
 
 	switch (size)
 	{
-	case 0:
-	{
-		float Angle = tanf(py / px);
-		VelocityX = -10.0f * sinf(Angle);
-		VelocityY = -10.0f * cosf(Angle);
-		Size = 0;
-		SizeName = "Large";
+		case 0:
+		{
+			VelocityX = -normalizeVector(px, py)[0] * 10.0f;
+			VelocityY = -normalizeVector(px, py)[1] * 10.0f;
 
-		break;
-	}
-	case 1:
-	{
-		float Angle = tanf(py / px);
-		VelocityX = 20.0f * cosf(Angle);
-		VelocityY = 20.0f * sinf(Angle);
-		Size = 1;
-		SizeName = "Medium";
+			Size = 0;
+			SizeName = "Large";
 
-		break;
-	}
-	case 2:
-	{
-		float Angle = tanf(px / py);
-		VelocityX = -40.0f * cosf(Angle);
-		VelocityY = -40.0f * sinf(Angle);
-		Size = 2;
-		SizeName = "Small";
+			break;
+		}
+		case 1:
+		{
+			VelocityX = -normalizeVector(px, py)[0] * 20.0f;
+			VelocityY = -normalizeVector(px, py)[1] * 20.0f;
+			Size = 1;
+			SizeName = "Medium";
 
-		break;
-	}
+			break;
+		}
+		case 2:
+		{
+			VelocityX = -normalizeVector(px, py)[0] * 40.0f;
+			VelocityY = -normalizeVector(px, py)[1] * 40.0f;
+			Size = 2;
+			SizeName = "Small";
+
+			break;
+		}
 	}
 }
 
