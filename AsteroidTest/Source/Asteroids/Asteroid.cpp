@@ -4,7 +4,7 @@
 
 float* normalizeVector(float PosX, float PosY)
 {
-	static float vector[2];
+	static float vector[2] = { 0, 0 };
 	double length = sqrt(pow(PosX, 2) + pow(PosY, 2));
 	vector[0] = PosX / (float)length;
 	vector[1] = PosY / (float)length;
