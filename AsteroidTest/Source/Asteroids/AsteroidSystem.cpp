@@ -30,3 +30,13 @@ void AsteroidSystem::printStats()
 
 	if (Asteroids.size() > 0) std::cout << std::endl;
 }
+
+void AsteroidSystem::add(Asteroid* asteroid)
+{
+	Asteroids.push_front(asteroid);
+}
+
+void AsteroidSystem::remove(Asteroid* asteroid)
+{
+	Asteroids.erase(std::find(Asteroids.begin(), Asteroids.end(), asteroid));
+}

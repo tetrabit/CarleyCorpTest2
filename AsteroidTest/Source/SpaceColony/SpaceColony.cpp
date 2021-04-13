@@ -34,58 +34,56 @@ void SpaceColony::shootAtAsteroid(std::deque<Asteroid*> asteroids)
 	// Shoot at the asteroid
 	switch (TargetAsteroid->getSize())
 	{
-	case 0:
-	{
-		std::cout << "----- Shooting at a Large Asteroid -----" << std::endl;
-		if (RandomHit.getNumber() <= TheCannon->getHitProbability(TargetAsteroid->getSizeName()))
+		case 0:
 		{
-			std::cout << "+++++ Large asteroid has been hit! +++++" << std::endl;
+			std::cout << "----- Shooting at a Large Asteroid -----" << std::endl;
+			if (RandomHit.getNumber() <= TheCannon->getHitProbability(TargetAsteroid->getSizeName()))
+			{
+				std::cout << "+++++ Large asteroid has been hit! +++++" << std::endl << std::endl;
 
-			// Split the asteroid into two Medium ones
-			asteroids.push_front(new Asteroid((TargetAsteroid->getPositionX() + RandomOffset.getNumber()), (TargetAsteroid->getPositionY() + RandomOffset.getNumber()), 1, "Medium"));
-			asteroids.push_front(new Asteroid((TargetAsteroid->getPositionX() + RandomOffset.getNumber()), (TargetAsteroid->getPositionY() + RandomOffset.getNumber()), 1, "Medium"));
+				// Split the asteroid into two Medium ones
+				asteroidSystem->add(new Asteroid((TargetAsteroid->getPositionX() + RandomOffset.getNumber()), (TargetAsteroid->getPositionY() + RandomOffset.getNumber()), 1, "Medium"));
+				asteroidSystem->add(new Asteroid((TargetAsteroid->getPositionX() + RandomOffset.getNumber()), (TargetAsteroid->getPositionY() + RandomOffset.getNumber()), 1, "Medium"));
+				asteroidSystem->remove(TargetAsteroid);
+			}
+			else
+			{
+				std::cout << "***** Missed Large asteroid!!! *****" << std::endl << std::endl;
+			}
+			break;
+		}
+		case 1:
+		{
+			std::cout << "----- Shooting at a Medium Asteroid -----" << std::endl;
+			if (RandomHit.getNumber() <= TheCannon->getHitProbability(TargetAsteroid->getSizeName()))
+			{
+				std::cout << "+++++ Medium asteroid has been hit! +++++" << std::endl << std::endl;
 
-			delete TargetAsteroid;
+				// Split the asteroid into two Small ones
+				asteroidSystem->add(new Asteroid((TargetAsteroid->getPositionX() + RandomOffset.getNumber()), (TargetAsteroid->getPositionY() + RandomOffset.getNumber()), 2, "Small"));
+				asteroidSystem->add(new Asteroid((TargetAsteroid->getPositionX() + RandomOffset.getNumber()), (TargetAsteroid->getPositionY() + RandomOffset.getNumber()), 2, "Small"));
+				asteroidSystem->remove(TargetAsteroid);
+			}
+			else
+			{
+				std::cout << "***** Missed Medium asteroid!!! *****" << std::endl << std::endl;
+			}
+			break;
 		}
-		else
+		case 2:
 		{
-			std::cout << "***** Missed Large asteroid!!! *****" << std::endl << std::endl;
+			std::cout << "----- Shooting at a Small Asteroid -----" << std::endl;
+			if (RandomHit.getNumber() <= TheCannon->getHitProbability(TargetAsteroid->getSizeName()))
+			{
+				std::cout << "+++++ Small asteroid has been hit! +++++" << std::endl << std::endl;
+				asteroidSystem->remove(TargetAsteroid);
+			}
+			else
+			{
+				std::cout << "***** Missed Small asteroid!!! *****" << std::endl << std::endl;
+			}
+			break;
 		}
-		break;
-	}
-	case 1:
-	{
-		std::cout << "----- Shooting at a Medium Asteroid -----" << std::endl;
-		if (RandomHit.getNumber() <= TheCannon->getHitProbability(TargetAsteroid->getSizeName()))
-		{
-			std::cout << "+++++ Medium asteroid has been hit! +++++" << std::endl;
-
-			// Split the asteroid into two Small ones
-			asteroids.push_front(new Asteroid((TargetAsteroid->getPositionX() + RandomOffset.getNumber()), (TargetAsteroid->getPositionY() + RandomOffset.getNumber()), 2, "Small"));
-			asteroids.push_front(new Asteroid((TargetAsteroid->getPositionX() + RandomOffset.getNumber()), (TargetAsteroid->getPositionY() + RandomOffset.getNumber()), 2, "Small"));
-
-			delete TargetAsteroid;
-		}
-		else
-		{
-			std::cout << "***** Missed Medium asteroid!!! *****" << std::endl << std::endl;
-		}
-		break;
-	}
-	case 2:
-	{
-		std::cout << "----- Shooting at a Small Asteroid -----" << std::endl;
-		if (RandomHit.getNumber() <= TheCannon->getHitProbability(TargetAsteroid->getSizeName()))
-		{
-			std::cout << "+++++ Small asteroid has been hit! +++++" << std::endl;
-			delete TargetAsteroid;
-		}
-		else
-		{
-			std::cout << "***** Missed Small asteroid!!! *****" << std::endl << std::endl;
-		}
-		break;
-	}
 	}
 
 	std::cout << asteroids.size() << " asteroids left." << std::endl << std::endl;

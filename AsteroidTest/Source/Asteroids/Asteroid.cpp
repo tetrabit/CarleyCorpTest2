@@ -25,7 +25,6 @@ Asteroid::Asteroid(float px, float py, char size, std::string size_name)
 		{
 			VelocityX = -normalizeVector(px, py)[0] * 10.0f;
 			VelocityY = -normalizeVector(px, py)[1] * 10.0f;
-
 			Size = 0;
 			SizeName = "Large";
 
